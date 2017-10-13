@@ -97,6 +97,6 @@ def create_backup():
     change_ownership(dest_path, args["user"])
     print(
         f"Backup completed."
-        f" Rights transferred to {args['user']}."
-        f" Location:{args['destination']}"
+        f" Rights transferred to " + args["user"] + "."
+        f" Location:" + args["destination"]
     )
