@@ -96,7 +96,7 @@ def create_backup():
     os.rename(source_path, dest_path)
     change_ownership(dest_path, args["user"])
     print(
-        f"Backup completed."
-        f" Rights transferred to " + args["user"] + "."
-        f" Location:" + args["destination"]
+        "Backup completed.\n"
+        "Rights transferred to " + args["user"] + ".\n"
+        "Location:" + args["destination"]
     )
