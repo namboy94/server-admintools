@@ -21,6 +21,10 @@ import os
 import sys
 from subprocess import Popen
 
+"""
+This module contains functions that help with permissions
+"""
+
 
 def is_sudo():
     """

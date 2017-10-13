@@ -18,8 +18,8 @@ You should have received a copy of the GNU General Public License
 along with toktokkie.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-from server_admin.gitlab import create_backup
+from server_admin.rsync import run_ssh_rsync_backup
 
 
 if __name__ == "__main__":
-    create_backup()
+    run_ssh_rsync_backup()
