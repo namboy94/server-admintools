@@ -35,13 +35,13 @@ def parse_backup_args():
     """
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("--destination",
+    parser.add_argument("-d", "--destination",
                         default="/var/opt/gitlab/backups",
                         help="Destination of the backup file")
-    parser.add_argument("--backup-path",
+    parser.add_argument("-b", "--backup-path",
                         default="/var/opt/gitlab/backups",
                         help="The backup directory as specified in gitlab.rb")
-    parser.add_argument("--user",
+    parser.add_argument("-u", "--user",
                         default="root",
                         help="The user that should own the backup file. "
                              "Defaults to root.")
