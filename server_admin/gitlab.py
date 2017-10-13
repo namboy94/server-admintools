@@ -60,7 +60,17 @@ def execute_gitlab_rake_backup():
     location specified in the gitlab.rb config file
     :return: None
     """
+    print("Executing gitlab-rake backup")
     Popen(["gitlab-rake", "gitlab:backup:create"]).wait()
+
+
+def create_config_tarball(destination_file):
+    """
+    Creates a tarball containing the gitlab instance's secrets and config
+    :return: None
+    """
+    print("Creating gitlab config and secrets backup")
+    Popen(["tar", "zcf", destination_file, "etc/gitlab"])
 
 
 def create_backup():
@@ -86,14 +96,20 @@ def create_backup():
         print("More than one backup generated. Aborting.")
 
     source_path = os.path.join(args["backup_path"], backups[0])
-    dest_filename = datetime.today().strftime("%Y-%m-%d-%H-%M-%S_gitlab.tar")
+    date_string = datetime.today().strftime("%Y-%m-%d-%H-%M-%S")
+    dest_filename = date_string + "_gitlab.tar"
+    tar_filename = date_string + "_gitlab_secrets.tar"
     dest_path = os.path.join(args["destination"], dest_filename)
+    tar_path = os.path.join(args["destination"], tar_filename)
 
     if not os.path.exists(args["destination"]):
         os.makedirs(args["destination"])
 
     os.rename(source_path, dest_path)
+    create_config_tarball(tar_path)
     change_ownership(dest_path, args["user"])
+    change_ownership(tar_path, args["user"])
+
     print(
         "Backup completed.\n"
         "Rights transferred to " + args["user"] + ".\n"
