@@ -22,7 +22,7 @@ import sys
 from subprocess import Popen
 
 
-def is_sudo() -> bool:
+def is_sudo():
     """
     Checks if the current user has root privileges
     :return: True if the user has the privileges, False otherwise
@@ -40,7 +40,7 @@ def quit_if_not_sudo():
         sys.exit(1)
 
 
-def change_ownership(path: str, user: str):
+def change_ownership(path, user):
     """
     Changes the ownership of a file or directory
     :param path: The path of the file or directory
