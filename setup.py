@@ -5,7 +5,7 @@ from server_admin.sudo import quit_if_not_sudo
 from setuptools import setup, find_packages
 
 
-def readme() -> str:
+def readme():
     """
     Reads the readme file.
     :return: the readme file as a string, 
@@ -53,7 +53,7 @@ if __name__ == "__main__":
             "Intended Audience :: System Administrators",
             "Development Status :: 1 - Planning",
             "Operating System :: POSIX :: Linux",
-            "Programming Language :: Python :: 3",
+            "Programming Language :: Python",
             "Topic :: System :: Systems Administration",
             "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"
         ],
@@ -64,7 +64,7 @@ if __name__ == "__main__":
         author_email="hermann@krumreyh.com",
         license="GNU GPL3",
         packages=find_packages(),
-        install_requires=['typing'],
+        install_requires=[],
         test_suite='nose.collector',
         tests_require=['nose'],
         scripts=find_scripts(),

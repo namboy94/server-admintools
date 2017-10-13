@@ -19,7 +19,6 @@ along with toktokkie.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
 import argparse
-from typing import Dict
 from subprocess import Popen
 from datetime import datetime
 from server_admin.sudo import quit_if_not_sudo, change_ownership
@@ -29,7 +28,7 @@ This module contains functions that help manage gitlab backups
 """
 
 
-def parse_backup_args() -> Dict[str, str]:
+def parse_backup_args():
     """
     Parses the arguments for the gitlab-backup script
     :return: The arguments provided via the CLI
