@@ -70,7 +70,7 @@ def create_config_tarball(destination_file):
     :return: None
     """
     print("Creating gitlab config and secrets backup")
-    Popen(["tar", "zcf", destination_file, "etc/gitlab"])
+    Popen(["tar", "zcf", destination_file, "/etc/gitlab"])
 
 
 def create_backup():
