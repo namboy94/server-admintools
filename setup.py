@@ -16,10 +16,10 @@ def readme() -> str:
         content = f.read()
 
     try:
-        # noinspection PyPackageRequirements
+        # noinspection PyPackageRequirements,PyUnresolvedReferences
         import pypandoc
         content = pypandoc.convert(content, 'rst', format='md')
-    except ModuleNotFoundError:
+    except ImportError:
         print("pypandoc not installed, will use raw markdown")
         pass
 
