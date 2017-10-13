@@ -5,7 +5,7 @@ from server_admin.sudo import quit_if_not_sudo
 from setuptools import setup, find_packages
 
 
-def readme():
+def readme() -> str:
     """
     Reads the readme file.
     :return: the readme file as a string, 
@@ -53,7 +53,7 @@ if __name__ == "__main__":
             "Intended Audience :: System Administrators",
             "Development Status :: 1 - Planning",
             "Operating System :: POSIX :: Linux",
-            "Programming Language :: Python",
+            "Programming Language :: Python :: 3",
             "Topic :: System :: Systems Administration",
             "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"
         ],
