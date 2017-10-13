@@ -87,7 +87,7 @@ def create_backup():
         print("More than one backup generated. Aborting.")
 
     source_path = os.path.join(args["backup_path"], backups[0])
-    dest_filename = datetime.today().strftime("%Y-%M-%d-%H-%m-%S_gitlab.tar")
+    dest_filename = datetime.today().strftime("%Y-%m-%d-%H-%M-%S_gitlab.tar")
     dest_path = os.path.join(args["destination"], dest_filename)
 
     if not os.path.exists(args["destination"]):
