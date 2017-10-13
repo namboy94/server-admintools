@@ -1,6 +1,7 @@
 # imports
 import os
-from adminlib import version
+from server_admin import version
+from server_admin.sudo import quit_if_not_sudo
 from setuptools import setup, find_packages
 
 
@@ -33,34 +34,39 @@ def find_scripts():
     scripts = []
     for file_name in os.listdir("scripts"):
         if not file_name == "__init__.py" and os.path.isfile(
-                os.path.join("bin", file_name)):
-            scripts.append(os.path.join("bin", file_name))
+                os.path.join("scripts", file_name)):
+            scripts.append(os.path.join("scripts", file_name))
     return scripts
 
-setup(
-    name="server-admin",
-    version=version,
-    description="A collection of server administration scripts",
-    long_description=readme(),
-    classifiers=[
-        "Environment :: Console",
-        "Natural Language :: English",
-        "Intended Audience :: System Administrators",
-        "Development Status :: 1 - Planning",
-        "Operating System :: POSIX :: Linux",
-        "Programming Language :: Python",
-        "Topic :: System :: Systems Administration",
-        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"
-    ],
-    url="https://gitlab.namibsun.net/namboy94/server-admin",
-    download_url="https://gitlab.namibsun.net/namboy94/"
-                 "server-admin/repository/archive.zip?ref=master",
-    author="Hermann Krumrey",
-    author_email="hermann@krumreyh.com",
-    license="GNU GPL3",
-    packages=find_packages(),
-    install_requires=['typing'],
-    test_suite='nose.collector',
-    tests_require=['nose'],
-    scripts=find_scripts(),
-    zip_safe=False)
+if __name__ == "__main__":
+
+    quit_if_not_sudo()
+
+    setup(
+        name="server-admin",
+        version=version,
+        description="A collection of server administration scripts",
+        long_description=readme(),
+        classifiers=[
+            "Environment :: Console",
+            "Natural Language :: English",
+            "Intended Audience :: System Administrators",
+            "Development Status :: 1 - Planning",
+            "Operating System :: POSIX :: Linux",
+            "Programming Language :: Python",
+            "Topic :: System :: Systems Administration",
+            "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"
+        ],
+        url="https://gitlab.namibsun.net/namboy94/server-admin",
+        download_url="https://gitlab.namibsun.net/namboy94/"
+                     "server-admin/repository/archive.zip?ref=master",
+        author="Hermann Krumrey",
+        author_email="hermann@krumreyh.com",
+        license="GNU GPL3",
+        packages=find_packages(),
+        install_requires=['typing'],
+        test_suite='nose.collector',
+        tests_require=['nose'],
+        scripts=find_scripts(),
+        zip_safe=False
+    )
