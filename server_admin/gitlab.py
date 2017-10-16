@@ -18,6 +18,7 @@ along with toktokkie.  If not, see <http://www.gnu.org/licenses/>.
 """
 
 import os
+import shutil
 import argparse
 from subprocess import Popen
 from datetime import datetime
@@ -115,3 +116,50 @@ def create_backup():
         "Rights transferred to " + args["user"] + ".\n"
         "Location:" + args["destination"]
     )
+
+
+def parse_clone_repo_args():
+    """
+    Parses the arguments for the git repository cloner
+    :return: The parsed CLI arguments
+    """
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-t", "--token", required=True,
+                        help="The Gitlab API Access token")
+    parser.add_argument("-s", "--server", required=True,
+                        help="The Gitlab Server address")
+    parser.add_argument("-d", "--destination", required=True,
+                        help="The backup destination")
+    return parser.parse_args()
+
+
+def fetch_gitlab_clone_script():
+    """
+    Downloads the latest version of the gitlab-cloner script
+    :return: None
+    """
+
+    if os.path.isdir("gitlab-cloner"):
+        shutil.rmtree("gitlab-cloner")
+    Popen(["git", "clone",
+           "https://gitlab.namibsun.net/namboy94/gitlab-cloner.git"]).wait()
+
+
+def backup_repos():
+    """
+    Clones all repositories from a gitlab instance for a user and tars the
+    directories together
+    :return: None
+    """
+
+    args = parse_clone_repo_args()
+    fetch_gitlab_clone_script()
+
+    date_string = datetime.today().strftime("%Y-%m-%d-%H-%M-%S")
+    dest_path = os.path.join(args.destination, date_string + "_git_repos")
+    Popen(["python", "gitlab-cloner/gitlab-cloner.py",
+           args.server, args.token, "-d", dest_path, "-a"
+           ]).wait()
+    Popen(["tar", "zcf", dest_path + ".tar", dest_path]).wait()
+    shutil.rmtree(dest_path)
