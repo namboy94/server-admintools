@@ -67,7 +67,7 @@ def find_scripts():
     return scripts
 
 
-if "test" not in sys.argv[1]:
+if "install" in sys.argv:
     quit_if_not_sudo()
 setup(
     name="server-admin",
