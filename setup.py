@@ -19,6 +19,7 @@ along with server-admintools.  If not, see <http://www.gnu.org/licenses/>.
 
 # imports
 import os
+import sys
 from server_admintools import version
 from server_admintools.sudo import quit_if_not_sudo
 from setuptools import setup, find_packages
@@ -66,7 +67,8 @@ def find_scripts():
     return scripts
 
 
-quit_if_not_sudo()
+if "test" not in sys.argv[1]:
+    quit_if_not_sudo()
 setup(
     name="server-admin",
     version=version,
