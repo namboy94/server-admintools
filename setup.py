@@ -70,7 +70,7 @@ def find_scripts():
 if "install" in sys.argv:
     quit_if_not_sudo()
 setup(
-    name="server-admin",
+    name="server-admintools",
     version=version,
     description="A collection of server administration bin",
     long_description=readme(),
@@ -84,9 +84,9 @@ setup(
         "Topic :: System :: Systems Administration",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"
     ],
-    url="https://gitlab.namibsun.net/namboy94/server-admin",
+    url="https://gitlab.namibsun.net/namboy94/server-admintools",
     download_url="https://gitlab.namibsun.net/namboy94/"
-                 "server-admin/repository/archive.zip?ref=master",
+                 "server-admintools/repository/archive.zip?ref=master",
     author="Hermann Krumrey",
     author_email="hermann@krumreyh.com",
     license="GNU GPL3",
