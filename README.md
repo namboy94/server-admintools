@@ -1,8 +1,8 @@
 # server-admintoolstools
 
 |master|develop|
-|:----:|:-----:|
-|[![build status](https://gitlab.namibsun.net/namboy94/server-admintools/badges/master/build.svg)](https://gitlab.namibsun.net/namboy94/server-admintools/commits/master)|[![build status](https://gitlab.namibsun.net/namboy94/server-admintools/badges/develop/build.svg)](https://gitlab.namibsun.net/namboy94/server-admintools/commits/develop)|
+|:---:|:---:|
+|[![build status](https://gitlab.namibsun.net/namibsun/python/server-admintools/badges/master/build.svg)](https://gitlab.namibsun.net/namibsun/python/server-admintools/commits/master)|[![build status](https://gitlab.namibsun.net/namibsun/python/server-admintools/badges/develop/build.svg)](https://gitlab.namibsun.net/namibsun/python/server-admintools/commits/develop)|
 
 ![Logo](resources/logo/logo-readme.png)
 
@@ -36,11 +36,9 @@ A collection of installable scripts (mostly) for server management.
 
 ## Further Information
 
-* [Changelog](https://gitlab.namibsun.net/namboy94/server-admintools/raw/master/CHANGELOG)
-* [License (GPLv3)](https://gitlab.namibsun.net/namboy94/server-admintools/raw/master/LICENSE)
-* [Gitlab](https://gitlab.namibsun.net/namboy94/server-admintools)
+* [Changelog](CHANGELOG)
+* [License (GPLv3)](LICENSE)
+* [Gitlab](https://gitlab.namibsun.net/namibsun/python/server-admintools)
 * [Github](https://github.com/namboy94/server-admintools)
-* [Python Package Index Site](https://pypi.python.org/pypi/server_admintools)
-* [Git Statistics (gitstats)](https://gitstats.namibsun.net/gitstats/server-admintools/index.html)
-* [Git Statistics (git_stats)](https://gitstats.namibsun.net/git_stats/server-admintools/index.html)
-* [Test Coverage](https://coverage.namibsun.net/server-admintools/index.html)
+* [Progstats](https://progstats.namibsun.net/projects/server-admintools)
+* [PyPi](https://pypi.org/project/server-admintools)
