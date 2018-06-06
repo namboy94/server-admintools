@@ -1,5 +1,5 @@
-"""
-Copyright 2017 Hermann Krumrey
+"""LICENSE
+Copyright 2017 Hermann Krumrey <hermann@krumreyh.com>
 
 This file is part of server-admintools.
 
@@ -15,7 +15,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with server-admintools.  If not, see <http://www.gnu.org/licenses/>.
-"""
+LICENSE"""
 
 import argparse
 from subprocess import Popen

@@ -1,5 +1,5 @@
-"""
-Copyright 2017 Hermann Krumrey
+"""LICENSE
+Copyright 2017 Hermann Krumrey <hermann@krumreyh.com>
 
 This file is part of server-admintools.
 
@@ -15,85 +15,32 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with server-admintools.  If not, see <http://www.gnu.org/licenses/>.
-"""
+LICENSE"""
+
 
 # imports
 import os
-import sys
-from server_admintools import version
-from server_admintools.sudo import quit_if_not_sudo
 from setuptools import setup, find_packages
 
 
-def readme():
-    """
-    Reads the readme file and converts it to RST if pypandoc is
-    installed. If not, the raw markdown text is returned
-    :return: the readme file as a string
-    """
-    # noinspection PyBroadException
-    try:
-        # noinspection PyPackageRequirements,PyUnresolvedReferences
-        import pypandoc
-        with open("README.md") as f:
-            # Convert markdown file to rst
-            markdown = f.read()
-            rst = pypandoc.convert(markdown, "rst", format="md")
-            return rst
+if __name__ == "__main__":
 
-    except ModuleNotFoundError:
-        # If pandoc is not installed, just return the raw markdown text
-        with open("README.md") as f:
-            return f.read()
-
-
-def find_scripts():
-    """
-    Returns a list of scripts in the bin directory
-    :return: the list of scripts
-    """
-    scripts = []
-
-    for file_name in os.listdir("bin"):
-
-        path = os.path.join("bin", file_name)
-        if file_name == "__init__.py":
-            continue
-        elif not os.path.isfile(path):
-            continue
-        else:
-            scripts.append(os.path.join("bin", file_name))
-
-    return scripts
-
-
-if "install" in sys.argv:
-    quit_if_not_sudo()
-setup(
-    name="server-admintools",
-    version=version,
-    description="A collection of server administration bin",
-    long_description=readme(),
-    classifiers=[
-        "Environment :: Console",
-        "Natural Language :: English",
-        "Intended Audience :: System Administrators",
-        "Development Status :: 1 - Planning",
-        "Operating System :: POSIX :: Linux",
-        "Programming Language :: Python",
-        "Topic :: System :: Systems Administration",
-        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"
-    ],
-    url="https://gitlab.namibsun.net/namboy94/server-admintools",
-    download_url="https://gitlab.namibsun.net/namboy94/"
-                 "server-admintools/repository/archive.zip?ref=master",
-    author="Hermann Krumrey",
-    author_email="hermann@krumreyh.com",
-    license="GNU GPL3",
-    packages=find_packages(),
-    install_requires=[],
-    test_suite='nose.collector',
-    tests_require=['nose'],
-    scripts=find_scripts(),
-    zip_safe=False
-)
+    setup(
+        name="server-admintools",
+        version=open("version", "r").read(),
+        description="An XDCC File Downloader based on the irclib framework",
+        long_description=open("README.md", "r").read(),
+        long_description_content_type="text/markdown",
+        author="Hermann Krumrey",
+        author_email="hermann@krumreyh.com",
+        classifiers=[
+            "License :: OSI Approved :: GNU General Public License v3 (GPLv3)"
+        ],
+        url="https://gitlab.namibsun.net/namibsun/python/server-admintools",
+        license="GNU GPL3",
+        packages=find_packages(),
+        scripts=list(map(lambda x: os.path.join("bin", x), os.listdir("bin"))),
+        install_requires=[],
+        include_package_data=True,
+        zip_safe=False
+    )
